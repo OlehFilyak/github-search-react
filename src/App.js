@@ -1,6 +1,9 @@
 import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Navbar } from "./Components/Navbar/Navbar";
 import { Home } from "./Components/pages/Home";
+import { Profile } from "./Components/pages/Profile";
+import { About } from "./Components/pages/About";
 import "./App.scss";
 
 import { Component } from "react";
@@ -8,12 +11,16 @@ import { Component } from "react";
 class App extends Component {
   render() {
     return (
-      <React.Fragment>
+      <BrowserRouter>
         <Navbar />
-        <div className="App">
-          <Home />
+        <div className="container pt-4">
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/profile:name" component={Profile} />
+          </Switch>
         </div>
-      </React.Fragment>
+      </BrowserRouter>
     );
   }
 }
